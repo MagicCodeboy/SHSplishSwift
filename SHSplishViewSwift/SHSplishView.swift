@@ -12,7 +12,7 @@ class SHSplishView: UIView, UIScrollViewDelegate{
     var imageArray:Array<Any> = []
     var scroView:UIScrollView?
     var _currentPage:Int?
-    
+    var pageControl = UIPageControl()
     func initWith(array: Array<Any>) {
         imageArray = array;
         configUI()
@@ -48,12 +48,12 @@ class SHSplishView: UIView, UIScrollViewDelegate{
         scroView?.isPagingEnabled = true
         scroView?.showsHorizontalScrollIndicator = false
         self.addSubview(scroView!)
-        let pageControl = UIPageControl.init(frame: CGRect.init(x: 30, y: self.frame.size.height - 30, width: self.frame.size.width - 2 * 30, height: self.frame.size.height))
+        pageControl = UIPageControl.init(frame: CGRect.init(x: 30, y: self.frame.size.height - 30, width: self.frame.size.width - 2 * 30, height: self.frame.size.height))
         pageControl.numberOfPages = imageArray.count
         pageControl.pageIndicatorTintColor = UIColor.white
-        pageControl.currentPageIndicatorTintColor = UIColor.darkGray
+        pageControl.currentPageIndicatorTintColor = UIColor.red
         _currentPage = 1
-        pageControl.currentPage = _currentPage!
+        pageControl.currentPage = _currentPage! - 1
         pageControl.tag = 100
         self.addSubview(pageControl)
     }
